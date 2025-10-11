@@ -1,14 +1,15 @@
 /// <reference path="../lib/openrct2.d.ts" />
 
+import { pluginName, pluginVersion } from "./nameAndVersion";
 import { startup } from "./startup";
 
 registerPlugin({
-	name: "Name of your plugin",
-	version: "1.0",
+	name: pluginName,
+	version: pluginVersion,
 	authors: [ "Your name" ],
 	type: "remote",
-	licence: "MIT",
-/**
+	licence: "GPL-3.0-only",
+	/**
 	 * This field determines which OpenRCT2 API version to use. 
 	 *
 	 * API version 110 starts at OpenRCT2 0.4.25 (released 2025-08-03) and is know to go up to 0.4.27
