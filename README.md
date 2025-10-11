@@ -1,5 +1,14 @@
-# Simple OpenRCT2 plugin template with Typescript
+# A Feature-rich OpenRCT2 plugin with GUI template
+## Using: Typescript, FlexUi and more
 
+**This is a fork of [Basssiiie's OpenRCT2-Simple-Typescript-Template](https://github.com/Basssiiie/OpenRCT2-Simple-Typescript-Template),
+which is being modified by one person to more suit his needs.**
+
+**My personal taste might not be the best for you and your project. Be sure to make yourself aware of other options.**
+
+
+_________________
+### Original OpenRCT2-Simple-Typescript-Template listing
 A simple and minimal template for OpenRCT2 plugins, using Typescript, without any unnecessary extra's.
 
 Also supports:
