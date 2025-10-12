@@ -12,7 +12,7 @@ which is being modified by one person to more suit his needs.**
 ### Contents of the template
 Kindly bear in mind this list lists only additions over original OpenRCT2-Simple-Typescript-Template
 
-#### Fast plugin name and version setup
+#### Fast name, author & version setup
 - In `rollup.config.js` simply overwrite `pluginName` and `pluginVersion` members
 ```typescript
 const pluginOptions = {
@@ -20,14 +20,23 @@ const pluginOptions = {
 	 * Human-readable name
 	 */
 	pluginName: "Tiger Plugin Template",
-	
+
+	/**
+	 * Author name
+	 * warning: this works only for plugins with single author (or for groups such as "ACME authors")
+	 * otherwise see plugin.ts around line 9 and use string[] to define a list of authors
+	 */
+	pluginAuthor: "Your Name",
+
 	/**
 	 * Version
 	 */
 	pluginVersion: "0.0"
 }
 ```
-name will be propagated where necessary (plugin name, menu item, window title) and as stripped of whitespace used to name output .js file
+- Name of the plugin will be propagated where necessary (plugin name, menu item, window title) and as stripped of whitespace used to name output .js file
+- Version and author's name gets propagated into `plugin.ts`
+- Version will be written into file name in case of production build (`npm run build`) 
 
 #### FlexUI with basic window already prepared
   - simply start actually wiriting GUI in `mainWin.ts`
@@ -40,7 +49,7 @@ name will be propagated where necessary (plugin name, menu item, window title) a
 - (manual mode: `npx tsx imgToBase64.ts`)
 - if using VS Code, there is task configured to run this automaticaly on folder open (you might be prompted to confirm task auto-run on first time)
   - example: file `img/coloursPalette.png` gets converted to be accesible in code as `pluginGraphics.coloursPalette.image`
-  - ```typescript
+    ```typescript
     	button({
             image: pluginGraphics.coloursPalette.image
         })
@@ -55,14 +64,17 @@ name will be propagated where necessary (plugin name, menu item, window title) a
     ```
 - the contents of `src/graphics` with extempt for `imageFromBase64.ts` are set to be ignored by git, in order not to include base64 graphics encoded data with the source
 
+#### Development build plugin window auto-open
+- In `startup.ts` there is a code that forces plugin's main window to open, conditional to the build being development
+- Together with hot reload feature this makes your plugin reload in the blink of a eye 
+
+  
 _________________
-### Original OpenRCT2-Simple-Typescript-Template listing
-A simple and minimal template for OpenRCT2 plugins, using Typescript, without any unnecessary extra's.
 
 Also supports:
 - Automatic plugin reload in OpenRCT2 (hot reload);
 - Out of the box minification to improve file sizes;
-- Support for external NPM packages (like FlexUI).
+- Support for external NPM packages.
 
 ## How to start
 
@@ -75,8 +87,10 @@ Also supports:
    - This file can usually be found in the [OpenRCT2 installation directory](#openrct2-installation-directory).
    - Alternatively you can download the file from Github [here](https://raw.githubusercontent.com/OpenRCT2/OpenRCT2/develop/distribution/openrct2.d.ts).
    - Another option is to make a symbolic link instead of copying the file, which will keep the file up to date whenever you install new versions of OpenRCT2.
-7. In `./src/plugin.ts`, change the name and author of the plugin to your liking.
-8. In `./rollup.config.js`, change the filename of the outputted plugin.
+7. There is no step 7
+8. In `./rollup.config.js`, change the members of `pluginOptions` (plugin name, author and version if you like to)
+
+It is possible to acomplish partialy step 2 (clone a repository you have created from this template) skip 3 and 4 and accomplish steps 5 and beyond in VS Code, for which purpose there are tasks configured. 
 
 ---
 
@@ -86,15 +100,28 @@ The template comes with several terminal commands to make developing plugins eas
 
 `npm run build`
 
-Creates a release build of your plugin. This version is optimized for sharing with others, using Terser to make the file as small as possible. By default, the plugin will be outputted to `./dist/`.
+Creates a release build of your plugin. This version is optimized for sharing with others, using Terser to make the file as small as possible. By default, the plugin will be outputted to `./dist/`. It will fail if graphics materials were not converted first.
+
+`npm run build-graphics`
+
+Encodes any png files in img folder to base64 and prepares them to be used in code under `pluginGraphics.`
+
+`npm run build-all:dev`
+
+Creates a develop build of your plugin. This includes graphics packing. This version is not optimized for sharing, but easier to read in case you want to see the outputted Javascript. By default, the plugin will be outputted in the plugin folder of the default [OpenRCT2 user directory](#openrct2-user-directory).
 
 `npm run build:dev`
 
-Creates a develop build of your plugin. This version is not optimized for sharing, but easier to read in case you want to see the outputted Javascript. By default, the plugin will be outputted in the plugin folder of the default [OpenRCT2 user directory](#openrct2-user-directory).
+Same as above, but excludes the graphics encoding process
+
+`npm run start-graphics`
+
+Will start a script to watch the `img` folder for changes and rebuilds storage of graphics encoded data on change. When opening the template folder in VS Code, this command is configured to be auto-run on folder open (you might be propmted to confirm on first time run)
 
 `npm start` or `npm run start`
 
 Will start a script that will automatically run `npm run build:dev` every time you make a change to any Typescript or Javascript file inside the `./src/` folder.
+
 
 ### Output paths
 
@@ -130,6 +157,7 @@ This project supports the [OpenRCT2 hot reload feature](https://github.com/OpenR
 4. Start the OpenRCT2 and load a save or start a new game.
 5. Each time you save any of the files in `./src/`, the server will compile `./src/registerPlugin.ts` and place compiled plugin file inside your local OpenRCT2 plugin directory.
 6. OpenRCT2 will notice file changes and it will reload the plugin.
+7. Defaultly to this template, your plugin window will close and reopen.
 
 ---
 
