@@ -6,7 +6,7 @@ import { startup } from "./startup";
 registerPlugin({
 	name: pluginName,
 	version: pluginVersion,
-	authors: [ "Your name" ],
+	authors: [ "__PLUGIN_AUTHOR__" ],
 	type: "remote",
 	licence: "GPL-3.0-only",
 	/**

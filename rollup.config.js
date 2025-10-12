@@ -14,6 +14,13 @@ const pluginOptions = {
 	pluginName: "Tiger Plugin Template",
 
 	/**
+	 * Author name
+	 * warning: this works only for plugins with single author (or for groups such as "ACME authors")
+	 * otherwise see plugin.ts around line 9 and use string[] to define a list of authors
+	 */
+	pluginAuthor: "Your Name",
+
+	/**
 	 * Version
 	 */
 	pluginVersion: "0.0"
@@ -92,7 +99,8 @@ const config = {
 			values: {
 				__BUILD_CONFIGURATION__: options.build,
 				__PLUGIN_NAME__: pluginOptions.pluginName,
-				__PLUGIN_VERSION__: pluginOptions.pluginVersion
+				__PLUGIN_VERSION__: pluginOptions.pluginVersion,
+				__PLUGIN_AUTHOR__: pluginOptions.pluginAuthor
 			}
 		}),
 		resolve(),
