@@ -6,7 +6,54 @@ which is being modified by one person to more suit his needs.**
 
 > [!WARNING]
 > **My personal taste might not be the best for you and your project. Be sure to make yourself aware of other options.**
+> 
+> This template uses GPL-3.0-only license due to incorporation of GPL code (original Simple Typescript Template has MIT)
 
+### Contents of the template
+Kindly bear in mind this list lists only additions over original OpenRCT2-Simple-Typescript-Template
+
+#### Fast plugin name and version setup
+- In `rollup.config.js` simply overwrite `pluginName` and `pluginVersion` members
+```typescript
+const pluginOptions = {
+	/**
+	 * Human-readable name
+	 */
+	pluginName: "Tiger Plugin Template",
+	
+	/**
+	 * Version
+	 */
+	pluginVersion: "0.0"
+}
+```
+name will be propagated where necessary (plugin name, menu item, window title) and as stripped of whitespace used to name output .js file
+
+#### FlexUI with basic window already prepared
+  - simply start actually wiriting GUI in `mainWin.ts`
+
+#### Automated graphics loading system
+- this is where the fun begins - fitting bespoke graphics to plugin (buttons with images, for example)
+- `img/OpenRCT2-plugin-safe.gpl` provides pallete in GIMP format with colours found safe (not getting remapped by primary or water remaps, etc...)
+- `img/coloursPalette.png` provides the same as above, but in png
+- run `npm run start-graphics` to have graphics from `/img` automaticaly contained via base64 encoding and decoding functions
+- (manual mode: `npx tsx imgToBase64.ts`)
+- if using VS Code, there is task configured to run this automaticaly on folder open (you might be prompted to confirm task auto-run on first time)
+  - example: file `img/coloursPalette.png` gets converted to be accesible in code as `pluginGraphics.coloursPalette.image`
+  - ```typescript
+    	button({
+            image: pluginGraphics.coloursPalette.image
+        })
+    ```
+    each member of `pluginGraphics` is
+    ```typescript
+    export type ImageData = {
+    	image: number;
+    	width: number;
+    	height: number;
+ 	};
+    ```
+- the contents of `src/graphics` with extempt for `imageFromBase64.ts` are set to be ignored by git, in order not to include base64 graphics encoded data with the source
 
 _________________
 ### Original OpenRCT2-Simple-Typescript-Template listing
