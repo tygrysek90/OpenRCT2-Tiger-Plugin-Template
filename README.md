@@ -13,7 +13,7 @@ which is being modified by one person to more suit his needs.**
 Kindly bear in mind this list lists only additions over original OpenRCT2-Simple-Typescript-Template
 
 #### Fast name, author & version setup
-- In `rollup.config.js` simply overwrite `pluginName` and `pluginVersion` members
+- In `rollup.config.js` simply overwrite given members
 ```typescript
 const pluginOptions = {
 	/**
@@ -39,16 +39,16 @@ const pluginOptions = {
 - Version will be written into file name in case of production build (`npm run build`) 
 
 #### FlexUI with basic window already prepared
-  - simply start actually wiriting GUI in `mainWin.ts`
+  - simply start actually writing GUI in `mainWin.ts`
 
 #### Automated graphics loading system
 - this is where the fun begins - fitting bespoke graphics to plugin (buttons with images, for example)
-- `img/OpenRCT2-plugin-safe.gpl` provides pallete in GIMP format with colours found safe (not getting remapped by primary or water remaps, etc...)
+- `img/OpenRCT2-plugin-safe.gpl` provides palette in GIMP format with colours found safe (not getting remapped by primary or water remaps, etc...)
 - `img/coloursPalette.png` provides the same as above, but in png
-- run `npm run start-graphics` to have graphics from `/img` automaticaly contained via base64 encoding and decoding functions
+- run `npm run start-graphics` to have graphics from `/img` automatically contained via base64 encoding and decoding functions
 - (manual mode: `npx tsx imgToBase64.ts`)
-- if using VS Code, there is task configured to run this automaticaly on folder open (you might be prompted to confirm task auto-run on first time)
-  - example: file `img/coloursPalette.png` gets converted to be accesible in code as `pluginGraphics.coloursPalette.image`
+- if using VS Code, there is task configured to run this automatically on folder open (you might be prompted to confirm task auto-run on first time)
+  - example: file `img/coloursPalette.png` gets converted to be accessible in code as `pluginGraphics.coloursPalette.image`
     ```typescript
     	button({
             image: pluginGraphics.coloursPalette.image
@@ -62,7 +62,7 @@ const pluginOptions = {
     	height: number;
  	};
     ```
-- the contents of `src/graphics` with extempt for `imageFromBase64.ts` are set to be ignored by git, in order not to include base64 graphics encoded data with the source
+- the contents of `src/graphics` with exempt for `imageFromBase64.ts` are set to be ignored by git, in order not to include base64 graphics encoded data with the source
 
 #### Development build plugin window auto-open
 - In `startup.ts` there is a code that forces plugin's main window to open, conditional to the build being development
@@ -90,7 +90,7 @@ Also supports:
 7. There is no step 7
 8. In `./rollup.config.js`, change the members of `pluginOptions` (plugin name, author and version if you like to)
 
-It is possible to acomplish partialy step 2 (clone a repository you have created from this template) skip 3 and 4 and accomplish steps 5 and beyond in VS Code, for which purpose there are tasks configured. 
+It is possible to accomplish partially step 2 (clone a repository you have created from this template) skip 3 and 4 and accomplish steps 5 and beyond in VS Code, for which purpose there are tasks configured. 
 
 ---
 
@@ -116,7 +116,7 @@ Same as above, but excludes the graphics encoding process
 
 `npm run start-graphics`
 
-Will start a script to watch the `img` folder for changes and rebuilds storage of graphics encoded data on change. When opening the template folder in VS Code, this command is configured to be auto-run on folder open (you might be propmted to confirm on first time run)
+Will start a script to watch the `img` folder for changes and rebuilds storage of graphics encoded data on change. When opening the template folder in VS Code, this command is configured to be auto-run on folder open (you might be prompted to confirm on first time run)
 
 `npm start` or `npm run start`
 
@@ -157,7 +157,7 @@ This project supports the [OpenRCT2 hot reload feature](https://github.com/OpenR
 4. Start the OpenRCT2 and load a save or start a new game.
 5. Each time you save any of the files in `./src/`, the server will compile `./src/registerPlugin.ts` and place compiled plugin file inside your local OpenRCT2 plugin directory.
 6. OpenRCT2 will notice file changes and it will reload the plugin.
-7. Defaultly to this template, your plugin window will close and reopen.
+7. Default to this template, your plugin window will close and reopen.
 
 ---
 
@@ -188,7 +188,7 @@ You can also open this folder from inside OpenRCT2, by selecting "Open custom co
 The following libraries and tools are used in this template:
 
 - **NodeJS** is the JavaScript engine used to develop and run code when the game is not running.
-- **NPM** is a library and package manager for JavasScript and TypeScript and can be used to install new packages and update existing packages in the project.
+- **NPM** is a library and package manager for JavaScript and TypeScript and can be used to install new packages and update existing packages in the project.
 - **TypeScript** is a expansion language to JavaScript that adds type checking when you are writing the code. It allows you to specify rules for how objects and values look like, so TypeScript can report back if your code follows these rules (instead of crashes or errors in-game).
 - **Rollup** bundles all source code, runs it through some plugins like TypeScript, and then outputs a single JavaScript plugin file.
 - **Nodemon** is the program that can watch a folder for changes and then trigger a specified action. It is used by `npm start` to watch the `./src/` folder and triggers `npm run build:dev` if any changes occur.
