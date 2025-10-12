@@ -1,4 +1,4 @@
-import { pluginName } from "./environment";
+import { build, pluginName } from "./environment";
 import { mainWindow } from "./mainWin";
 
 export function startup()
@@ -10,5 +10,8 @@ export function startup()
 	if (typeof ui !== "undefined")
 	{
 		ui.registerMenuItem(pluginName, () => mainWindow.open());
+		if (build.isDevelopment) {
+			mainWindow.open()
+		}
 	}
 }
