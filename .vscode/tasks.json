@@ -5,7 +5,7 @@
     "tasks": [
         // CTRL+SHIFT+B shortcut
         {
-            "label": "npm run build:dev",
+            "label": "Build (dev, without image rebuild)",
             "type": "shell",
             "command": "npm run build:dev",
             "problemMatcher": [],
@@ -14,12 +14,27 @@
                 "isDefault": true
             }
         },
-        //{
-        //    "label": "Resources: png images to base 64",
-        //    "type": "shell",
-        //    "command": "node rebuildPngToBase64.js",
-        //    "problemMatcher": []
-        //},
+        {
+            "label": "Resources: watch and auto-rebuild graphics",
+            "type": "shell",
+            "command": "npm run start-graphics",
+            "problemMatcher": [],
+            "runOptions": {
+                "runOn": "folderOpen"
+            }
+        },
+        {
+            "label": "Build (dev, all)",
+            "type": "shell",
+            "command": "npm run build-all:dev",
+            "problemMatcher": []
+        },
+        {
+            "label": "Resources: png images to base 64",
+            "type": "shell",
+            "command": "npm run build-graphics",
+            "problemMatcher": []
+        },
         {
             "label": "Initial: Get TypeScript definitions for OpenRCT2",
             "type": "shell",
