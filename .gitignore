@@ -1,6 +1,10 @@
 # OpenRCT2 TypeScript API declaration file
 lib/openrct2.d.ts
 
+# Base64-packed graphics data (saves data transfer)
+src/graphics/*
+!src/graphics/imageFromBase64.ts
+
 # Logs
 logs
 *.log
