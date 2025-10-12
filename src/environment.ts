@@ -1,10 +1,36 @@
 /**
- * Build environment observation
- * 
- * this depends on @rollup/plugin-replace replacing contents 
- * of the first constant at roll-up time 
+ * Build environment, name and version substitution and observation
+ */ 
+
+/** 
+ * All this depends on @rollup/plugin-replace replacing contents 
+ * of the underscored constants at roll-up time 
  * see rollup.config.js around line 74 for definition
  */
+
+/** Plugin name in human readable form */
+export const pluginName = "__PLUGIN_NAME__"
+
+/** Primary version designation */
+const version : string = "__PLUGIN_VERSION__"
+
+/**
+ * 
+ * @returns en empty string in case of production build, -dev suffix otherwise 
+ */
+function suffix(): string{
+    if (build.isDevelopment) {
+        return "-dev"
+    }
+    else {
+        return ""
+    }
+}
+
+/** plugin version with 'v' prefix */
+export const pluginVersion = `v${version}${suffix()}`
+
+
 
 /**
  * Based on OpenRCT2-ProxyPather and OpenRCT2-RideVehicleEditor by Basssiiie, 

@@ -1,5 +1,5 @@
+import { pluginName } from "./environment";
 import { mainWindow } from "./mainWin";
-import { pluginName } from "./nameAndVersion";
 
 export function startup()
 {

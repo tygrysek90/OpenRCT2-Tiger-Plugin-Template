@@ -12,7 +12,8 @@
  * Thanks to Sadret for this nice function :)
 **/
 
-import { pluginName } from "../nameAndVersion";
+import { pluginName } from "../environment";
+
 
 
 export type ImageData = {

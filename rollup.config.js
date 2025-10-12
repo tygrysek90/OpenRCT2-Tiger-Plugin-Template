@@ -7,12 +7,25 @@ import { homedir } from "os";
 import { promisify } from "util";
 
 
+const pluginOptions = {
+	/**
+	 * Human-readable name
+	 */
+	pluginName: "Tiger Plugin Template",
+
+	/**
+	 * Version
+	 */
+	pluginVersion: "0.0"
+}
+
 const options =
 {
 	/**
-	 * Change the file name of the output file here.
+	 * Plugin filename created out of human-readable name
+	 * e.g. "TigerPluginTemplate.js"
 	 */
-	filename: "my-plugin.js",
+	filename: pluginOptions.pluginName.replaceAll(" ","")+".js",
 
 	/**
 	 * Determines in what build mode the plugin should be build. The default here takes
@@ -36,7 +49,9 @@ async function getOutput()
 {
 	if (options.build !== "development")
 	{
-		return `./dist/${options.filename}`;
+		// plugin filename spiced with version
+		// e.g. "./dist/TigerPluginTemplate-v0.0.js"
+		return `./dist/${pluginOptions.pluginName.replaceAll(" ","")}-v${pluginOptions.pluginVersion}.js`;
 	}
 
 	const platform = process.platform;
@@ -75,7 +90,9 @@ const config = {
 			include: "./src/environment.ts",
 			preventAssignment: true,
 			values: {
-				__BUILD_CONFIGURATION__: options.build
+				__BUILD_CONFIGURATION__: options.build,
+				__PLUGIN_NAME__: pluginOptions.pluginName,
+				__PLUGIN_VERSION__: pluginOptions.pluginVersion
 			}
 		}),
 		resolve(),
