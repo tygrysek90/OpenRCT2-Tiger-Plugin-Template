@@ -1,11 +1,13 @@
 # A Feature-rich OpenRCT2 plugin with GUI template
 ## Using: Typescript, FlexUi and more
 
+<img align="right" width="190" height="193" alt="tiger-win" src="https://github.com/user-attachments/assets/1b867798-d4ba-40b2-a0bd-86386dd2784d" />
+
 **This is a fork of [Basssiiie's OpenRCT2-Simple-Typescript-Template](https://github.com/Basssiiie/OpenRCT2-Simple-Typescript-Template),
-which is being modified by one person to more suit his needs.**
+modified to be more robust and include more things from the start**
 
 > [!WARNING]
-> **My personal taste might not be the best for you and your project. Be sure to make yourself aware of other options.**
+> **This is one-man project. I made it to fit my taste. My personal taste might not be the best for you and your project. Be sure to make yourself aware of other options.**
 > 
 > This template uses GPL-3.0-only license due to incorporation of GPL code (original Simple Typescript Template has MIT)
 
