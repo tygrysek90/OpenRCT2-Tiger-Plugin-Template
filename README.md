@@ -1,3 +1,6 @@
+#### I have ceased my activities on GitHub. Contents of this repository are no longer maintained.
+
+
 # A Feature-rich OpenRCT2 plugin with GUI template
 ## Using: Typescript, FlexUi and more
 
